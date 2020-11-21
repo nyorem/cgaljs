@@ -1,2 +1,11 @@
-em++ -U__SSE2_MATH__ -I ../../includes/cgal -I ../../includes/ ../../libs/libgmp.so ../../libs/libcgal.so AABB_custom_example.cpp -o test.js
-nodejs test.js
+em++ simple_triangulation_3.cpp \
+    ../../libs/libgmp.a \
+    ../../libs/libmpfr.a \
+    -U__SSE2_MATH__ \
+    -I ../../includes \
+    -I ../../includes/gmp \
+    -I ../../includes/mpfr \
+    -I ../../includes/cgal \
+    -o test.js
+
+node test.js
