@@ -1,7 +1,7 @@
 import os
 import shutil
 from subprocess import call
-from utils import download, untar
+from .utils import download, untar
 
 DOWNLOAD_DIR = "downloads"
 SOURCE_DIR = "source"
@@ -11,7 +11,7 @@ BUILD_DIR = "build"
 def build_component(name, includes_dir, libs_dir, working_dir=None):
 
     # Step 0 - Prepare
-    print "Building component:%s" % name
+    print("Building component:%s" % name)
     component =  __import__("components.%s.config" % name, fromlist="components")
     working_dir = prepare_directory(name, working_dir)
     source_dir = os.path.join(get_source_dir(working_dir), component.SOURCE_DIR)
@@ -49,8 +49,8 @@ def build_component(name, includes_dir, libs_dir, working_dir=None):
     # Step 6 - Copy artifacts to given destination
     copy_artifacts(component.ARTIFACTS, working_dir, includes_dir, libs_dir)
 
-    print "Completed building component:%s" % name
-    print "********************************************************************************************************"
+    print("Completed building component:%s" % name)
+    print("********************************************************************************************************")
 
 
 def get_default_working_dir(name):
@@ -69,7 +69,7 @@ def get_component(name):
     try:
         return __import__("components.%s.config" % name, fromlist="components")
     except:
-        print "No such component:%s" % name
+        print("No such component:%s" % name)
         return
 
 
@@ -97,7 +97,7 @@ def copy_artifacts(artifacts, working_dir, includes_dir, libs_dir):
         for include in artifacts['includes']:
             source = os.path.join(get_source_dir(working_dir), include['source'])
             destination = os.path.join(includes_dir, include['name'])
-            print "Copying include directory from:%s to:%s" % tuple([source, destination])
+            print("Copying include directory from:%s to:%s" % tuple([source, destination]))
 
             try:
                 shutil.rmtree(destination)
@@ -105,16 +105,16 @@ def copy_artifacts(artifacts, working_dir, includes_dir, libs_dir):
                 pass
             shutil.copytree(source, destination)
     except:
-        print "Component did not produce any includes"
+        print("Component did not produce any includes")
 
     try:
         for lib in artifacts['libs']:
             source = os.path.join(get_source_dir(working_dir), lib['source'])
             destination = os.path.join(libs_dir, lib['name'])
-            print "Copying lib from:%s to:%s" % tuple([source, destination])
+            print("Copying lib from:%s to:%s" % tuple([source, destination]))
             shutil.copy(source, destination)
     except:
-        print "Component did not produce any libs"
+        print("Component did not produce any libs")
 
 
 def patch_files(patches, source_dir, name):
