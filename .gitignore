@@ -4,6 +4,7 @@ build/
 includes/
 libs/
 test.js
+examples/**/*.o
 examples/**/*.wasm
 examples/**/*.html
 examples/**/*.html.mem
