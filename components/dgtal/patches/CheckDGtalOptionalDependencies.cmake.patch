@@ -1,0 +1,44 @@
+--- cmake/CheckDGtalOptionalDependencies.cmake	2020-11-23 11:07:06.136974164 +0100
++++ cmake/CheckDGtalOptionalDependencies.cmake.new	2020-11-23 11:07:01.748860435 +0100
+@@ -152,24 +152,24 @@
+     message(FATAL_ERROR "GMP not found. Check the cmake variables associated to this package or disable it." )
+   ENDIF(GMP_FOUND)
+ 
+-  try_compile(
+-    GMP_HAS_IOSTREAM
+-    ${CMAKE_BINARY_DIR}
+-    ${PROJECT_SOURCE_DIR}/cmake/src/gmp/gmpstream.cpp
+-    CMAKE_FLAGS
+-    -DINCLUDE_DIRECTORIES:STRING=${GMP_INCLUDE_DIR}
+-    -DLINK_LIBRARIES:STRING=${GMPXX_LIBRARIES}\;${GMP_LIBRARIES}
+-    OUTPUT_VARIABLE OUTPUT
+-    )
++  # try_compile(
++  #   GMP_HAS_IOSTREAM
++  #   ${CMAKE_BINARY_DIR}
++  #   ${PROJECT_SOURCE_DIR}/cmake/src/gmp/gmpstream.cpp
++  #   CMAKE_FLAGS
++  #   -DINCLUDE_DIRECTORIES:STRING=${GMP_INCLUDE_DIR}
++  #   -DLINK_LIBRARIES:STRING=${GMPXX_LIBRARIES}\;${GMP_LIBRARIES}
++  #   OUTPUT_VARIABLE OUTPUT
++  #   )
+ 
+-  if ( GMP_HAS_IOSTREAM )
+-    add_definitions("-DGMP_HAS_IOSTREAM")
+-    message(STATUS "   * GMPXX has iostream capabilities")
+-  ELSE(GMP_HAS_IOSTREAM)
+-    message(STATUS ${OUTPUT})
+-    message(STATUS "   * GMPXX does not have iostream capabilities")
+-    message(FATAL_ERROR "GMP has been found but there is a link isuse with some g++ versions. Please check your system or disable the GMP dependency." )
+-  endif (GMP_HAS_IOSTREAM )
++  # if ( GMP_HAS_IOSTREAM )
++  #   add_definitions("-DGMP_HAS_IOSTREAM")
++  #   message(STATUS "   * GMPXX has iostream capabilities")
++  # ELSE(GMP_HAS_IOSTREAM)
++  #   message(STATUS ${OUTPUT})
++  #   message(STATUS "   * GMPXX does not have iostream capabilities")
++  #   message(FATAL_ERROR "GMP has been found but there is a link isuse with some g++ versions. Please check your system or disable the GMP dependency." )
++  # endif (GMP_HAS_IOSTREAM )
+ ENDIF(WITH_GMP)
+ 
+ # -----------------------------------------------------------------------------
