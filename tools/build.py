@@ -99,11 +99,16 @@ def copy_artifacts(artifacts, working_dir, includes_dir, libs_dir):
             destination = os.path.join(includes_dir, include['name'])
             print("Copying include directory from:%s to:%s" % tuple([source, destination]))
 
-            try:
-                shutil.rmtree(destination)
-            except:
-                pass
-            shutil.copytree(source, destination)
+            is_file = ("is_file" in include.keys()) and include["is_file"]
+            if not is_file:
+                try:
+                    shutil.rmtree(destination)
+                except:
+                    pass
+
+                shutil.copytree(source, destination)
+            else:
+                shutil.copyfile(source, destination)
     except:
         print("Component did not produce any includes")
 

@@ -16,6 +16,9 @@ COMPONENTS = [
     'gmp',
     'mpfr',
     'cgal',
+    'eigen3',
+    'zlib',
+    'dgtal',
 ]
 
 for component in COMPONENTS:

@@ -10,16 +10,15 @@ SOURCE_PATCHES = [
     # {'file': 'CMakeLists.txt', 'patch': 'CMakeLists.txt.patch'},
     ]
 CONFIGURE_CMD = ' '.join([
-    'cmake',
+    'emcmake cmake',
     '-DGMP_INCLUDE_DIR:STRING={includes}/gmp',
     '-DGMP_LIBRARIES:STRING={libs}/libgmp.a',
     '-DMPFR_INCLUDE_DIR:STRING={includes}/mpfr',
     '-DMPFR_LIBRARIES:STRING={libs}/libmpfr.a',
     '-DWITH_CGAL_ImageIO=OFF',
     '-DWITH_CGAL_Qt5:BOOL=OFF',
-    '-DBoost_INCLUDE_DIRS:STRING={includes}',
+    '-DBoost_INCLUDE_DIR:STRING={includes}',
     '-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON',
-    '-DCMAKE_TOOLCHAIN_FILE={component_dir}/cmake-emcc-toolchain.txt',
     '-DCMAKE_BUILD_TYPE=Release',
     '-DCMAKE_CXX_FLAGS="-v -U__SSE2_MATH__ --ignore-dynamic-linking -DCGAL_HAS_NO_THREADS -U__GNUG__ -DCGAL_NO_ASSERTIONS -DCGAL_FORWARD -DBOOST_MATH_DISABLE_STD_FPCLASSIFY -DBOOST_NO_NATIVE_LONG_DOUBLE_FP_CLASSIFY -DBOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS"'
 ])

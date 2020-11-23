@@ -44,7 +44,7 @@ def untar(tar_filename, dest_path):
     print("Finished unarchiving")
 
 def is_archive_file(archive_path):
-    return archive_path.split('.')[-1] in [ 'bz2', 'xz' ]
+    return archive_path.split('.')[-1] in [ 'gz', 'bz2', 'xz' ]
 
 def is_lzma_archive(archive_path):
     return archive_path.split('.')[-1] == 'xz'
