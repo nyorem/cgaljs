@@ -4,4 +4,7 @@ build/
 includes/
 libs/
 test.js
-*.wasm
+examples/**/*.wasm
+examples/**/*.html
+examples/**/*.html.mem
+examples/**/*.js

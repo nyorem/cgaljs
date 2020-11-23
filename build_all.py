@@ -19,6 +19,7 @@ COMPONENTS = [
     'eigen3',
     'zlib',
     'dgtal',
+    'geogram',
 ]
 
 for component in COMPONENTS:

@@ -1,0 +1,14 @@
+--- src/lib/geogram/basic/process_unix.cpp	2020-11-23 13:45:27.506623438 +0100
++++ src/lib/geogram/basic/process_unix.cpp.new	2020-11-23 13:45:18.242393351 +0100
+@@ -78,6 +78,11 @@
+ #ifdef GEO_OS_EMSCRIPTEN
+ #include <emscripten.h>
+ #include <emscripten/threading.h>
++
++#define FE_DIVBYZERO 4
++#define FE_OVERFLOW 8
++#define FE_UNDERFLOW 16
++#define FE_INVALID 32
+ #endif
+ 
+ #define GEO_USE_PTHREAD_MANAGER
